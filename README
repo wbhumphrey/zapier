@@ -1,0 +1,10 @@
+#Run this command alone and login to your zapier account
+docker run -it --name=zapier-login wbhumphrey/zapier bash -c "zapier login"
+
+#Save the zapier developer token for later use
+docker cp zapier-login:/root/.zapierrc .
+docker rm zapier-login
+
+#Bootstrap an app using the example zapier app on github
+docker-compose build
+docker-compose run --rm node bash -c "git clone https://github.com/zapier/zapier-platform-app-github-example.git . && rm -rf .git && rm -rf .gitignore && npm install"

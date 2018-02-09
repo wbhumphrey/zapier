@@ -5,8 +5,6 @@ services:
       context: .
     user: "node"
     working_dir: /home/node/app
-    environment:
-      - NODE_ENV=production
     volumes:
       - ./src/:/home/node/app
     expose:
